@@ -1,0 +1,3 @@
+LIBRARY dianji1fuzzypid_sfun.mexw64
+EXPORTS
+mexFunction

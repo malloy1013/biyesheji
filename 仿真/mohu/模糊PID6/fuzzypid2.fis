@@ -1,0 +1,75 @@
+[System]
+Name='fuzzypid2'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=3
+NumRules=16
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='e'
+Range=[0 1]
+NumMFs=4
+MF1='Z':'gbellmf',[0.1666 2.5 -0.0025]
+MF2='S':'trimf',[0 0.3333 0.6667]
+MF3='M':'trimf',[0.3333 0.6667 1]
+MF4='B':'gbellmf',[0.1666 2.5 1]
+
+[Input2]
+Name='ec'
+Range=[0 1]
+NumMFs=4
+MF1='Z':'gbellmf',[0.1666 2.5 0]
+MF2='S':'trimf',[0 0.3333 0.6667]
+MF3='M':'trimf',[0.3333 0.6667 1]
+MF4='B':'gbellmf',[0.1666 2.5 1]
+
+[Output1]
+Name='Kp'
+Range=[0 9]
+NumMFs=4
+MF1='S':'gbellmf',[1.5 2.5 0]
+MF2='M':'trimf',[0 3 6]
+MF3='B':'trimf',[3 6 9]
+MF4='VB':'gbellmf',[1.5 2.5 9]
+
+[Output2]
+Name='Ki'
+Range=[0 2.3]
+NumMFs=4
+MF1='S':'gbellmf',[0.3832 2.5 2.395e-017]
+MF2='M':'trimf',[0 0.7664 1.532]
+MF3='B':'trimf',[0.7664 1.532 2.3]
+MF4='VB':'gbellmf',[0.3832 2.5 2.3]
+
+[Output3]
+Name='Kd'
+Range=[0 0.8]
+NumMFs=4
+MF1='S':'gbellmf',[0.1333 2.5 8.325e-018]
+MF2='M':'trimf',[0 0.2666 0.5331]
+MF3='B':'trimf',[0.2666 0.5331 0.8]
+MF4='VB':'gbellmf',[0.1333 2.5 0.8]
+
+[Rules]
+4 4, 3 1 1 (1) : 1
+4 3, 4 1 2 (1) : 1
+4 2, 4 1 2 (1) : 1
+4 1, 4 1 4 (1) : 1
+3 4, 2 2 1 (1) : 1
+3 3, 3 2 2 (1) : 1
+3 2, 3 1 2 (1) : 1
+3 1, 3 1 4 (1) : 1
+2 4, 3 3 1 (1) : 1
+2 3, 4 4 2 (1) : 1
+2 2, 4 4 2 (1) : 1
+2 1, 3 4 4 (1) : 1
+1 4, 3 4 1 (1) : 1
+1 3, 4 4 2 (1) : 1
+1 2, 3 4 2 (1) : 1
+1 1, 1 4 4 (1) : 1

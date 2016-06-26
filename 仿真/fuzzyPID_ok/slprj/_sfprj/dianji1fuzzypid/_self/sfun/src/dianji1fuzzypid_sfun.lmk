@@ -1,0 +1,39 @@
+CC     = "D:\MATLAB\R2014b\sys\lcc64\lcc64\bin\lcc64.exe"
+LD     = "D:\MATLAB\R2014b\sys\lcc64\lcc64\bin\lcclnk64.exe"
+LIBCMD = "D:\MATLAB\R2014b\sys\lcc64\lcc64\bin\lcclib64.exe"
+CFLAGS = -dll -noregistrylookup  -c -Zp8 -DLCC_WIN64 -DMATLAB_MEX_FILE -DMX_COMPAT_32 -nodeclspec 
+LDFLAGS = -s -dll -L"D:\MATLAB\R2014b\sys\lcc64\lcc64\lib64" -entry LibMain -map sfun.map 
+LIBFLAGS = 
+
+OBJECTS = \
+	"dianji1fuzzypid_sfun.obj"\
+	"c2_dianji1fuzzypid.obj"\
+	"dianji1fuzzypid_sfun_registry.obj"\
+	"lccstub.obj"\
+	"dianji1fuzzypid_sfun.def"\
+	"D:\MATLAB\R2014b\extern\lib\win64\microsoft\sf_runtime.lib"\
+	"D:\MATLAB\R2014b\extern\lib\win64\microsoft\libmwblas.lib"\
+	"D:\MATLAB\R2014b\extern\lib\win64\microsoft\libmx.lib"\
+	"D:\MATLAB\R2014b\extern\lib\win64\microsoft\libmex.lib"\
+	"D:\MATLAB\R2014b\extern\lib\win64\microsoft\libmat.lib"\
+	"D:\MATLAB\R2014b\extern\lib\win64\microsoft\libfixedpoint.lib"\
+	"D:\MATLAB\R2014b\extern\lib\win64\microsoft\libut.lib"\
+	"D:\MATLAB\R2014b\extern\lib\win64\microsoft\libmwmathutil.lib"\
+	"D:\MATLAB\R2014b\extern\lib\win64\microsoft\libemlrt.lib"\
+	"D:\MATLAB\R2014b\extern\lib\win64\microsoft\libmwsl_log_load_blocks.lib"\
+	"D:\MATLAB\R2014b\extern\lib\win64\microsoft\libmwsimulink.lib"\
+	"D:\MATLAB\R2014b\lib\win64\libmwipp.lib"\
+
+INCLUDE_PATH= -I"D:\MATLAB\R2014b\sys\lcc64\lcc64\include64"  -I"D:\MATLAB\R2014b\extern\include"  -I"D:\MATLAB\R2014b\simulink\include"  -I"D:\MATLAB\R2014b\stateflow\c\mex\include"  -I"D:\MATLAB\R2014b\rtw\c\src"  -I"L:\毕业设计\仿真\fuzzyPID\slprj\_sfprj\dianji1fuzzypid\_self\sfun\src" 
+ 
+
+dianji1fuzzypid_sfun.mexw64 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o dianji1fuzzypid_sfun.mexw64 @dianji1fuzzypid_sfun.lmko
+dianji1fuzzypid_sfun.obj :	"dianji1fuzzypid_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "dianji1fuzzypid_sfun.c"
+c2_dianji1fuzzypid.obj :	"c2_dianji1fuzzypid.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_dianji1fuzzypid.c"
+dianji1fuzzypid_sfun_registry.obj :	"dianji1fuzzypid_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "dianji1fuzzypid_sfun_registry.c"
+lccstub.obj :	"D:\MATLAB\R2014b\sys\lcc64\lcc64\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "D:\MATLAB\R2014b\sys\lcc64\lcc64\mex\lccstub.c"
